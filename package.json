@@ -1,0 +1,39 @@
+{
+  "name": "@hanzo/prompt",
+  "version": "1.0.0",
+  "description": "Canonical unified system prompt (# Hanzo Rules) for Hanzo App, Hanzo CLI, Hanzo MCP, and progressive skill discovery via hanzoskills.com.",
+  "type": "module",
+  "license": "BSD-3-Clause",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hanzoai/prompt.git"
+  },
+  "homepage": "https://github.com/hanzoai/prompt",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "default": "./index.mjs"
+    },
+    "./PROMPT.md": "./PROMPT.md"
+  },
+  "files": [
+    "PROMPT.md",
+    "index.mjs",
+    "index.d.ts",
+    "install.sh",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node --test test.mjs"
+  },
+  "keywords": [
+    "hanzo",
+    "prompt",
+    "system-prompt",
+    "mcp",
+    "hanzoskills",
+    "ai",
+    "agents"
+  ]
+}
