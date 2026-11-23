@@ -1,50 +1,49 @@
-# hanzoai/prompt
+# `@hanzo/prompt`
 
-Canonical unified system prompt (`# Hanzo Rules`) shared by **Hanzo App** (Web, Desktop, Mobile), **Hanzo CLI** (`hanzoai/cli`), **Hanzo MCP**, and any agent runtime.
+Canonical unified system prompt (`# Hanzo Rules`) for **Hanzo App** (Web, Desktop, Mobile), **Hanzo CLI** (`hanzo`), **Hanzo MCP** (19 canonical tools), and any MCP-compatible AI coding agent.
 
-Designed for progressive skill discovery through **[hanzoskills.com](https://hanzoskills.com)** (`https://hanzoskills.com/llms.txt`, backed by `hanzoai/skills`) instead of loading all skills upfront.
+- **Single source of truth**: [`PROMPT.md`](./PROMPT.md)
+- **Portable MCP server**: `npx -y hanzo mcp` (19 canonical tools: `fs`, `exec`, `code`, `git`, `fetch`, `workspace`, `browser`, `computer`, `ui`, `kai`, `think`, `plan`, `memory`, `tasks`, `tracker`, `coding`, `research`, `skills`, `hanzo`)
+- **Progressive skill discovery**: [`https://hanzoskills.com/llms.txt`](https://hanzoskills.com/llms.txt) (`skills search/detect → get → apply`, never bulk-loaded upfront)
+- **Onboarding**: [`https://hanzoskills.com/hanzo.md`](https://hanzoskills.com/hanzo.md)
 
 ## Install
-
-### Shell / CLI
 
 ```sh
 curl -fsSL https://raw.githubusercontent.com/hanzoai/prompt/main/install.sh | sh
 ```
 
-Writes the canonical prompt to `~/.hanzo/PROMPT.md`. Or via Hanzo CLI:
+Writes `~/.hanzo/PROMPT.md`. Or via Hanzo CLI:
 
 ```sh
-hanzo prompt          # print canonical prompt
-hanzo prompt install  # write ~/.hanzo/PROMPT.md
+hanzo prompt install --refresh
+hanzo prompt show
+hanzo prompt skills deploy
 ```
 
-### Node / TypeScript (`@hanzo/prompt`)
-
-```sh
-pnpm add github:hanzoai/prompt
-```
+## JavaScript / TypeScript
 
 ```ts
-import { HANZO_PROMPT, buildHanzoPrompt } from '@hanzo/prompt';
+import { HANZO_PROMPT, buildHanzoPrompt } from '@hanzo/prompt'
 
-const system = buildHanzoPrompt({
-  surface: 'Hanzo Desktop',
-  mcpUrl: 'https://api.hanzo.ai/v1/mcp',
-});
+const system = buildHanzoPrompt('Surface: Hanzo Desktop')
 ```
 
-### Direct Raw Fetch
+## MCP Client Config
 
-```sh
-curl -fsSL https://raw.githubusercontent.com/hanzoai/prompt/main/PROMPT.md
+```json
+{
+  "mcpServers": {
+    "hanzo": {
+      "command": "npx",
+      "args": ["-y", "hanzo", "mcp"]
+    }
+  }
+}
 ```
 
-## Progressive Skills & MCP
+Use `npx.cmd` on Windows when the client requires the executable wrapper.
 
-- **Skills index**: `https://hanzoskills.com/llms.txt` — agents match only the specific `$skill` markdown needed for the current task.
-- **Hanzo MCP**: `https://api.hanzo.ai/v1/mcp` + local `hanzo-mcp` / ZAP peers (`zsh/exec`, `fs`, `git`, `curl`, `browser/playwright`, `lsp`, `mcp__hanzo__agent`).
+## License
 
-## Prompt Source
-
-See [PROMPT.md](./PROMPT.md).
+BSD-3-Clause — see [`LICENSE`](./LICENSE).

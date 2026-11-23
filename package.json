@@ -1,6 +1,6 @@
 {
   "name": "@hanzo/prompt",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Canonical unified system prompt (# Hanzo Rules) for Hanzo App, Hanzo CLI, Hanzo MCP, and progressive skill discovery via hanzoskills.com.",
   "type": "module",
   "license": "BSD-3-Clause",
